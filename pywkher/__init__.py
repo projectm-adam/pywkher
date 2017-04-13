@@ -10,7 +10,11 @@ def generate_pdf(html='', url=''):
     if html and url:
         raise ValueError('Must pass HTML or specify a URL, not both')
 
-    wkhtmltopdf_default = 'wkhtmltopdf-heroku'
+    wkhtmltopdf_default = os_path.join(
+        os_path.split(os_path.split(os_path.abspath(__file__))[0])[0],
+        'bin/wkhtmltopdf-heroku')
+
+    os_path.split(os_path.split(os_path.abspath(__file__))[0])[0]
 
     # Reference command
     wkhtmltopdf_cmd = environ.get('WKHTMLTOPDF_CMD', wkhtmltopdf_default)
@@ -21,7 +25,7 @@ def generate_pdf(html='', url=''):
     if html:
         # Save the HTML to a temp file
         html_file = NamedTemporaryFile(delete=False, suffix='.html')
-        html_file.write(html)
+        html_file.write(bytes(html, encoding='utf-8'))
         html_file.close()
 
         # wkhtmltopdf

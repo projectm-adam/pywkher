@@ -1,5 +1,6 @@
 from setuptools import setup
 
+
 setup(
     name='pywkher',
     version='1.0.4',
@@ -7,7 +8,7 @@ setup(
     author='Jason Mayfield',
     author_email='jason@codetalk.rs',
     packages=['pywkher', ],
-    scripts=['bin/wkhtmltopdf-heroku'],
+    scripts=['install_script.py'],
     description='wkhtmltopdf for Python on Heroku',
     long_description=open('README.rst').read(),
     classifiers=[
