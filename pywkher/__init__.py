@@ -3,7 +3,7 @@ from subprocess import call as call_subprocess
 from tempfile import NamedTemporaryFile
 
 
-def generate_pdf(html='', url='', delete_html=True):
+def generate_pdf(html='', url='', delete_html=True, delete_pdf=False):
     # Validate input
     if not html and not url:
         raise ValueError('Must pass HTML or specify a URL')
@@ -18,7 +18,7 @@ def generate_pdf(html='', url='', delete_html=True):
     wkhtmltopdf_cmd = environ.get('WKHTMLTOPDF_CMD', wkhtmltopdf_default)
 
     # Set up return file
-    pdf_file = NamedTemporaryFile(delete=False, suffix='.pdf')
+    pdf_file = NamedTemporaryFile(delete=delete_pdf, suffix='.pdf')
 
     if html:
         # Save the HTML to a temp file
