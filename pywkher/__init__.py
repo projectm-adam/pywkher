@@ -22,10 +22,9 @@ def generate_pdf(html='', url=''):
 
     if html:
         # Save the HTML to a temp file
-        html_file = NamedTemporaryFile(delete=False, suffix='.html')
+        html_file = NamedTemporaryFile(delete=True, suffix='.html')
         html_file.write(bytes(html, encoding='utf-8'))
         html_file.close()
-        html_file.delete()
 
         # wkhtmltopdf
         call_subprocess([wkhtmltopdf_cmd, '-q', html_file.name, pdf_file.name])
