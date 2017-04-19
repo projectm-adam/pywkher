@@ -3,7 +3,7 @@ from subprocess import call as call_subprocess
 from tempfile import NamedTemporaryFile
 
 
-def generate_pdf(html='', url=''):
+def generate_pdf(html='', url='', delete_html=True):
     # Validate input
     if not html and not url:
         raise ValueError('Must pass HTML or specify a URL')
@@ -22,7 +22,7 @@ def generate_pdf(html='', url=''):
 
     if html:
         # Save the HTML to a temp file
-        html_file = NamedTemporaryFile(delete=True, suffix='.html')
+        html_file = NamedTemporaryFile(delete=delete_html, suffix='.html')
         html_file.write(bytes(html, encoding='utf-8'))
         html_file.close()
 
