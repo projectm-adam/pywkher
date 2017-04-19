@@ -14,8 +14,6 @@ def generate_pdf(html='', url=''):
         os_path.split(os_path.split(os_path.abspath(__file__))[0])[0],
         'bin/wkhtmltopdf-heroku')
 
-    os_path.split(os_path.split(os_path.abspath(__file__))[0])[0]
-
     # Reference command
     wkhtmltopdf_cmd = environ.get('WKHTMLTOPDF_CMD', wkhtmltopdf_default)
 
